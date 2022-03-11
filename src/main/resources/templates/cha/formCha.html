@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang=”pt-br” xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <title>| App Nobre Chá |</title>
+    </head>
+
+    <body>
+
+        <nav id="nav-responsivo" class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+            <div class="container-fluid">
+
+                <a class="navbar-brand" href="/"><img src="/imagens/logotipo.png"></a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
+                        aria-controls="navbarsExample03" aria-expanded="true" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class=" navbar-collapse collapse" id="navbarsExample03">
+                    <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/produtos">Lista de produtos</a>
+                        </li>
+                    </ul>
+                        <form>
+                            <input class="form-control" type="text" placeholder="Buscar produto..." aria-label="">
+                        </form>
+                </div>
+            </div>
+
+        </nav>
+
+        <br>
+
+        <div class="container">
+
+            <h1 class="display-5 fw-bold lh-1 mb-3">Cadastrar</h1>
+
+            <br>
+
+            <th:block th:include="mensagemValidacao"></th:block>
+
+            <form class="row g-3" method="post" enctype="multipart/form-data">
+
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome do produto</label>
+                    <input type="text" class="form-control" id="nome" name="nome" >
+                </div>
+                <div class="mb-3">
+                    <label for="preco" class="form-label">Preço</label>
+                    <input type="text" class="form-control" value="" id ="preco" name="preco"  required placeholder="R$ 0,00" />
+                </div>
+                <br>
+                <select class="form-select" aria-label="Default select example" id ="idtipo" name="idtipo">
+                    <option>Selecione o tipo</option>
+                    <option th:each="tipo: ${tipos}" th:value="${tipo.idtipo}" th:text="${tipo.nome}"></option>
+                </select>
+                <br>
+                <div class="mb-3">
+                    <label for="img" class="form-label"></label>
+                    <input type="file" class="form-control" id ="img" name="fileProduto"  required />
+                </div>
+                <br>
+                <div class="mb-3">
+                    <label for="descricao" class="form-label">Descrição</label>
+                    <textarea class="form-control" name="descricao" id="descricao" maxlength="254" rows="3" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg px-4 me-md-2" >Cadastrar Produto</button>
+
+            </form>
+        </div>
+        <div class="footer-copyright fixed-bottom bg-dark text-center py-3">
+            <span class="text-light align-middle">| App Cha | - © 2022 Copyright</span>
+            <span class="text-light align-middle">Realização: Suane Bittencourt</span>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+
+    </body>
+
+</html>
